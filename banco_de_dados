@@ -1,0 +1,21 @@
+create database sistema_de_login;
+use sistema_de_login;
+
+create table login 
+(
+email varchar(100) not null,
+senha varchar(50) not null,
+primary key(email)
+);
+
+create table usuario 
+(
+nomeCompleto varchar(100) not null,
+dataNascimento date not null,
+genero enum('masculino', 'feminino', 'transgênero', 'gênero neutro', 'não binário' ) not null,
+cpf varchar(11) not null,
+telefone char(11) not null unique,
+email varchar(100) not null,
+primary key(cpf),
+FOREIGN KEY (email) REFERENCES login(email)
+);
